@@ -196,25 +196,28 @@ extension HomeViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let sectionName = contents[indexPath.section].sectionName
-        print("TEST: This is \(sectionName) section and content #\(indexPath.item + 1)")
+        let isFirstSection = indexPath.section == 0
+        let selectedItem = isFirstSection ? mainItem : contents[indexPath.section].contentItem[indexPath.item]
+        let contentDetailView = ContentDetailView(item: selectedItem)
+        let hostingVC = UIHostingController(rootView: contentDetailView)
+        self.show(hostingVC, sender: nil)
     }
 }
 
 // preview using SwiftUI
 struct HomeViewController_Previews: PreviewProvider {
     static var previews: some View {
-        Container()
+        HomeViewControllerRepresentable()
             .edgesIgnoringSafeArea(.all)
     }
-    
-    struct Container: UIViewControllerRepresentable {
-        func makeUIViewController(context: Context) -> some UIViewController {
-            let layout = UICollectionViewLayout()
-            let homeViewController = HomeViewController(collectionViewLayout: layout)
-            return UINavigationController(rootViewController: homeViewController)
-        }
-        
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+}
+
+struct HomeViewControllerRepresentable: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let layout = UICollectionViewLayout()
+        let homeViewController = HomeViewController(collectionViewLayout: layout)
+        return UINavigationController(rootViewController: homeViewController)
     }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }

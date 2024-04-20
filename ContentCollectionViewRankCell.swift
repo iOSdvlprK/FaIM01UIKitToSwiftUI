@@ -28,7 +28,7 @@ class ContentCollectionViewRankCell: UICollectionViewCell {
         
         // rankLabel
         rankLabel.font = .systemFont(ofSize: 100, weight: .black)
-        rankLabel.textColor = .white
+        rankLabel.textColor = .label
         contentView.addSubview(rankLabel)
         rankLabel.snp.makeConstraints {
             $0.leading.equalToSuperview()

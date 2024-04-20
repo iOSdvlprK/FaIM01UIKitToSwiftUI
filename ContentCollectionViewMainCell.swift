@@ -49,7 +49,7 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         
         // descriptionLabel
         descriptionLabel.font = .systemFont(ofSize: 13)
-        descriptionLabel.textColor = .white
+        descriptionLabel.textColor = .label
         descriptionLabel.sizeToFit()
         
         // contentStackView
@@ -60,8 +60,8 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         
         [plusButton, infoButton].forEach {
             $0.titleLabel?.font = .systemFont(ofSize: 13)
-            $0.setTitleColor(.white, for: .normal)
-            $0.imageView?.tintColor = .white
+            $0.setTitleColor(.label, for: .normal)
+            $0.imageView?.tintColor = .label
             $0.adjustVerticalLayout(5)
         }
         
@@ -74,8 +74,8 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
         
         playButton.setTitle("▶ Play", for: .normal)
-        playButton.setTitleColor(.black, for: .normal)
-        playButton.backgroundColor = .white
+        playButton.setTitleColor(.systemBackground, for: .normal)
+        playButton.backgroundColor = .label
         playButton.layer.cornerRadius = 3
         playButton.snp.makeConstraints {
             $0.width.equalTo(90)
@@ -104,7 +104,7 @@ class ContentCollectionViewMainCell: UICollectionViewCell {
         
         [tvButton, movieButton, categoryButton].forEach {
             menuStackView.addArrangedSubview($0)
-            $0.setTitleColor(.white, for: .normal)
+            $0.setTitleColor(.label, for: .normal)
             $0.layer.shadowColor = UIColor.black.cgColor
             $0.layer.shadowOpacity = 1
             $0.layer.shadowRadius = 3
